@@ -1,66 +1,55 @@
-## Foundry
+# ETH Bridge Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A simple cross-chain bridge smart contract built with [Foundry](https://book.getfoundry.sh/).  
+This project demonstrates how to lock, mint, and burn tokens across chains, serving as a foundation for building secure bridges.
 
-Foundry consists of:
+---
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## 📂 Project Structure
+eth-bridge-contract/
+├── lib/        # external dependencies (e.g. OpenZeppelin)
+├── script/     # deployment & interaction scripts
+├── src/        # core bridge contracts
+├── test/       # test contracts
+└── foundry.toml
 
-## Documentation
+---
 
-https://book.getfoundry.sh/
+## 🚀 Getting Started
 
-## Usage
+### 1. Install Foundry
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
 
-### Build
+### 2. Initialize the project
+forge init eth-bridge-contract
+cd eth-bridge-contract
 
-```shell
-$ forge build
-```
+### 3. Install dependencies
+forge install OpenZeppelin/openzeppelin-contracts
 
-### Test
+### 4. Build
+forge build
 
-```shell
-$ forge test
-```
+### 5. Test
+forge test
 
-### Format
+---
 
-```shell
-$ forge fmt
-```
+## 📜 Example Bridge Flow
+- **Lock:** Users lock tokens on Chain A.
+- **Mint:** Relayer mints wrapped tokens on Chain B.
+- **Burn:** Users burn wrapped tokens on Chain B.
+- **Release:** Relayer unlocks tokens back on Chain A.
 
-### Gas Snapshots
+---
 
-```shell
-$ forge snapshot
-```
+## 🛡️ Security Notes
+- This is an educational reference implementation.
+- Always audit before deploying to mainnet.
+- Bridge security depends heavily on relayers/oracles — keep them decentralized!
 
-### Anvil
+---
 
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+## 📄 License
+MIT
